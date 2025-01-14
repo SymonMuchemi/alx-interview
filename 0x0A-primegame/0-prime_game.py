@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Prime Game
-"""
+""" Prime Game solution """
 
 
 from typing import Literal, Any
