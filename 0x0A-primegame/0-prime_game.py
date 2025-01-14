@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-Prime Game Solution
+"""Prime Game Solution
 
 This module implements the solution to the "Prime Game" task. 
 Maria and Ben play a game involving consecutive integers and prime numbers.
