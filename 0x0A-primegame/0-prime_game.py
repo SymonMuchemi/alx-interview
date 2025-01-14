@@ -1,13 +1,31 @@
 #!/usr/bin/python3
-""" Prime Game solution """
+"""
+Prime Game Solution
 
+This module implements the solution to the "Prime Game" task. 
+Maria and Ben play a game involving consecutive integers and prime numbers.
+This module provides functions to simulate the game and determine the winner.
+
+Functions:
+- findMultiples(num, targets): Removes multiples of a given number from a list.
+- isPrime(i): Checks if a number is a prime.
+- findPrimes(n): Counts and removes prime numbers and their multiples from a set.
+- isWinner(x, nums): Determines the overall winner after multiple rounds of the game.
+"""
 
 from typing import Literal, Any
 
 
 def findMultiples(num, targets) -> Any:
     """
-    Finds multiples of a given number within a list
+    Removes multiples of a given number from a list.
+
+    Args:
+        num (int): The number whose multiples are to be removed.
+        targets (list[int]): The list of numbers to filter.
+
+    Returns:
+        list[int]: The updated list with multiples of num removed.
     """
     for i in targets:
         if i % num == 0:
@@ -17,7 +35,13 @@ def findMultiples(num, targets) -> Any:
 
 def isPrime(i) -> bool:
     """
-    Check if a number is prime.
+    Checks if a number is a prime.
+
+    Args:
+        i (int): The number to check.
+
+    Returns:
+        bool: True if the number is prime, False otherwise.
     """
     if i == 1:
         return False
@@ -29,7 +53,13 @@ def isPrime(i) -> bool:
 
 def findPrimes(n) -> int:
     """
-    Dispatch a given set into prime numbers and non-prime numbers.
+    Counts and removes prime numbers and their multiples from a set.
+
+    Args:
+        n (set[int]): A set of integers.
+
+    Returns:
+        int: The count of prime numbers removed from the set.
     """
     counter = 0
     target = list(n)
@@ -38,22 +68,22 @@ def findPrimes(n) -> int:
             counter += 1
             target.remove(i)
             target = findMultiples(i, target)
-        else:
-            pass
     return counter
 
 
 def isWinner(x, nums) -> None | Literal['Maria'] | Literal['Ben']:
     """
-    Maria and Ben are playing a game.Given a set of consecutive integers
-    starting from 1 up to and including n, they take turns choosing a
-    prime number from the set and removing that number and its
-    multiples from the set.
-    The player that cannot make a move loses the game.
+    Determines the winner of the game after multiple rounds.
 
-    They play x rounds of the game, where n may be different for each round.
-    Assuming Maria always goes first and both players play optimally,
-    determine who the winner of each game is.
+    Args:
+        x (int): The number of rounds played.
+        nums (list[int]): A list containing the upper limits for each round.
+
+    Returns:
+        Literal['Maria', 'Ben', None]: 
+            - 'Maria' if Maria wins more rounds.
+            - 'Ben' if Ben wins more rounds.
+            - None if there is a tie.
     """
     players = {'Maria': 0, 'Ben': 0}
     cluster = set()
